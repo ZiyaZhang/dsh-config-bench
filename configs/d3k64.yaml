@@ -1,0 +1,4 @@
+config_id: d3k64
+title: 深度 3、同时 64 个
+patch:
+  - {id: subagent, config: {maxDepth: 3, maxActiveSubagents: 64}}

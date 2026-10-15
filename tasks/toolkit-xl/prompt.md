@@ -1,0 +1,1 @@
+工作目录里是一个 Python 包 toolkit 的骨架。spec/ 是规格说明（先读 spec/README.md）；toolkit/ 里每个函数只有签名，还没有实现；tests/ 里是一部分测试。请按规格把整个包实现完：12 个子包共 48 个模块、12 个子包的入口函数（各自的 __init__.py）和命令行（__main__.py）。只用标准库。本机是 Python 3.12，可以用 python3 -m pytest 运行测试。tests/ 只是部分测试，判分会用更完整的测试，所以要按规格写对；不要修改 spec/ 和 tests/。

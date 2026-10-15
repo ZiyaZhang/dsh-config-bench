@@ -1,0 +1,5 @@
+config_id: d1k8
+title: 深度 1、同时 8 个（DSH 默认）
+default: true
+patch:
+  - {id: subagent, config: {maxDepth: 1, maxActiveSubagents: 8}}

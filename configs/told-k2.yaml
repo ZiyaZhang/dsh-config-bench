@@ -1,0 +1,6 @@
+config_id: told-k2
+title: 深度 1、同时 2 个，并把上限写进工具说明
+description: 对照组：同样的上限，但工具说明里告诉模型上限是多少。
+patch:
+  - {id: subagent, config: {maxDepth: 1, maxActiveSubagents: 2}}
+tool_description_suffix: "同时最多只能有 {k} 个 subagent 在跑。"

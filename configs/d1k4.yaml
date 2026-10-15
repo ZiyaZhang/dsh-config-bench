@@ -1,0 +1,4 @@
+config_id: d1k4
+title: 深度 1、同时 4 个
+patch:
+  - {id: subagent, config: {maxDepth: 1, maxActiveSubagents: 4}}

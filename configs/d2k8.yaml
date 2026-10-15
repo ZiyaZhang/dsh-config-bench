@@ -1,0 +1,4 @@
+config_id: d2k8
+title: 深度 2、同时 8 个
+patch:
+  - {id: subagent, config: {maxDepth: 2, maxActiveSubagents: 8}}

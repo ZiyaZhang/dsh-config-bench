@@ -1,0 +1,5 @@
+config_id: d0
+title: 不开 subagent
+description: 深度上限 0，模型只能自己做。
+patch:
+  - {id: subagent, config: {maxDepth: 0}}

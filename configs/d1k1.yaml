@@ -1,0 +1,5 @@
+config_id: d1k1
+title: 深度 1、同时 1 个
+description: 允许派活，但一次只能活一个 subagent。
+patch:
+  - {id: subagent, config: {maxDepth: 1, maxActiveSubagents: 1}}
