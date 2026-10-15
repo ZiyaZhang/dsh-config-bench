@@ -6,6 +6,7 @@
   DSH_BENCH_EFFORT      推理强度（默认 max）
   DSH_BENCH_API_KEY     模型密钥；没设就按 DSH_BENCH_KEYCHAIN（service[:account]）去钥匙串取
   DSH_BENCH_SEARCH_BASE_URL / DSH_BENCH_SEARCH_API_KEY   联网题才要
+  DSH_BENCH_DIRECT=1    端点所在主机不走本机代理（内网端点 + 本机挂代理时要开）
 """
 from __future__ import annotations
 
@@ -35,12 +36,18 @@ class Endpoint:
     api_key: str
     max_tokens: int = 256000
     thinking: str = "enabled"
+    direct: bool = False
     search_base_url: Optional[str] = None
     search_api_key: Optional[str] = None
 
     def child_env(self, web: bool) -> Dict[str, str]:
         env = {"DEEPSEEK_BASE_URL": self.base_url, "DEEPSEEK_API_KEY": self.api_key,
                "NODE_USE_SYSTEM_CA": "1"}
+        if self.direct:
+            # 端点在内网、本机又挂着代理时：这个主机不走代理。
+            host = self.base_url.split("//")[-1].split("/")[0].split(":")[0]
+            env.update({"NO_PROXY": host, "no_proxy": host,
+                        "HTTP_PROXY": "", "HTTPS_PROXY": "", "http_proxy": "", "https_proxy": ""})
         if web:
             if not (self.search_base_url and self.search_api_key):
                 raise SystemExit("这道题要联网，但 DSH_BENCH_SEARCH_BASE_URL / DSH_BENCH_SEARCH_API_KEY 没设")
@@ -72,5 +79,6 @@ def load() -> Endpoint:
                     api_key=key,
                     max_tokens=int(os.environ.get("DSH_BENCH_MAX_TOKENS", "256000")),
                     thinking=os.environ.get("DSH_BENCH_THINKING", "enabled"),
+                    direct=os.environ.get("DSH_BENCH_DIRECT", "") not in ("", "0", "false"),
                     search_base_url=os.environ.get("DSH_BENCH_SEARCH_BASE_URL") or None,
                     search_api_key=skey or None)

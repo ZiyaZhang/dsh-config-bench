@@ -6,10 +6,7 @@
 
 - [ ] 跑批程序：从 `subagent-limits-eval/code/dsec_matrix_v6.py` 移过来，去掉开发机路径和内网端点，改成读 `configs/*.yaml` 和 `tasks/*/task.yaml`。
 - [ ] 指标：移 `run_metrics.py`，输出字段改成 `docs/design.md` 里的 schema。
-- [ ] 判分资产（都在开发机 `/weka-hg/.../dsec-exp` 上，等机器能登）：
-  - [ ] `exercises-24`：判分用的完整 Python 测试（工作区里只有部分测试）。
-  - [ ] `toolkit-xl`：3,737 个隐藏测试。
-  - [ ] `chain-16`：16 步的答案键。
+- [x] 判分资产已从开发机取回（2026-10-15）：`exercises-24` 的 24 份干净测试、`toolkit-xl` 的 61 个测试文件、`chain-16` 的 16 步答案键。
 
 ## 开跑之后
 

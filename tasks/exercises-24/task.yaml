@@ -20,7 +20,8 @@ variants:
   - {id: limited-180, agent_timeout_sec: 10800, prompt_suffix: expected/limit-180.md}
   - {id: limited-120, agent_timeout_sec: 10800, prompt_suffix: expected/limit-120.md}
 scorers:
-  - {name: hidden_tests, type: hidden_tests, suite: tests/, assets: pending}
+  - {name: hidden_tests, type: hidden_tests, suite: tests/, layout: per_exercise}
 aggregate: mean
 notes: |
-  工作区里每道题带一份部分测试（*_test.py）；判分用的完整测试还没放进来，见 docs/TODO.md。
+  工作区里每道题自带一份 *_test.py，agent 能改它。判分不用工作区里那份：
+  tests/ 下是 24 份干净副本，判分时覆盖回去再跑，所以改测试没有用。

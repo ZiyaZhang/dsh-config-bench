@@ -14,7 +14,7 @@ max_agent_timeout_sec: 3600
 max_test_timeout_sec: 300
 expert_time_estimate_min: 60
 scorers:
-  - {name: answers, type: exact_answers, path: expected/answers.json, assets: pending}
+  - {name: answers, type: exact_answers, path: expected/answers.json}
 aggregate: mean
 notes: |
   设计成不可并行：每一步的下一份说明由上一步的答案决定。用来验证"题目不适合拆分时配置不该有收益"。

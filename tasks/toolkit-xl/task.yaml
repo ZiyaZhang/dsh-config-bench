@@ -14,7 +14,8 @@ max_agent_timeout_sec: 5400
 max_test_timeout_sec: 1800
 expert_time_estimate_min: 960
 scorers:
-  - {name: hidden_tests, type: hidden_tests, suite: tests/, assets: pending}
+  - {name: hidden_tests, type: hidden_tests, suite: tests/, layout: flat}
 aggregate: mean
 notes: |
-  规格在工作区的 spec/ 下；判分用 3,737 个隐藏测试，测试还没放进来，见 docs/TODO.md。
+  规格在工作区的 spec/ 下，工作区里没有测试。tests/ 是 61 个测试文件、1,267 个 test 函数
+  （按用例数算 3,737 条断言级检查），判分时拷进交付的代码旁边跑。
