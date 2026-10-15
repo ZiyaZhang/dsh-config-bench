@@ -1,0 +1,3 @@
+# 只在 task.yaml 的 web: false 时追加：断掉联网工具，保证离线题真的离线。
+- id: tool-web
+  config: {search: false, fetch: false}

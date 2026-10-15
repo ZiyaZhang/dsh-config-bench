@@ -3,9 +3,9 @@
 一个 scorer 是一个函数：score(trial, task, spec) -> Score。
 注册靠 @scorer("<type>")，task.yaml 里 scorers[].type 对上哪个就用哪个。
 
-规矩（两条，别绕过去）：
-  * 判不了就返回 value=None，不要返回 0——缺值和零分是两回事。
-  * scorer 自己不跑 agent、不碰网络；它只读这次运行留下的文件和日志，
+约定：
+  * 判不了返回 value=None，不返回 0：缺值和零分是两回事。
+  * scorer 不跑 agent、不联网，只读这次运行留下的文件和日志，
     所以同一批运行可以离线重判任意多次（harness/score.py）。
 """
 from __future__ import annotations

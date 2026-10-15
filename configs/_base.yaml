@@ -1,0 +1,26 @@
+# 每个配置都带上这一份。模型、推理强度、fork 模式固定，这样比的只有配置。
+# {{...}} 在跑批时用环境变量替换，内网地址不进仓库。
+- id: agent-default-model
+  config:
+    provider: deepseek-official
+    model: {{MODEL}}
+{{EFFORT_LINE}}
+- id: tool-subagent-fork
+  config:
+    provider: fork
+    toolName: subagent_fork
+    backgroundMode: continuable
+- id: tool-workflow
+  disabled: true
+- id: llm-deepseek
+  config:
+    maxTokens: {{MAX_TOKENS}}
+    thinking: {{THINKING}}            # enabled / disabled；有的端点要求带思考预算，关掉更省事          # 一次回复最多生成多少 token；端点有上限时要调小
+    retryPolicy:
+      mode: normal
+      maxRetries: 12
+      backoff: {initialDelayMs: 2000, maxDelayMs: 60000, jitterRatio: 0.2}
+- id: sandbox-policy
+  config: {mode: danger-full-access}
+- id: approval
+  config: {policy: never}

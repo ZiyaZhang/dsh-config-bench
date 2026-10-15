@@ -1,0 +1,5 @@
+# 只在 task.yaml 的 web: true 时追加。
+- id: web-search-deepseek
+  config:
+    apiKeyEnv: SEARCH_API_KEY
+    baseURL: {{SEARCH_BASE_URL}}
